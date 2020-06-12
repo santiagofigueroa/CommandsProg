@@ -27,7 +27,7 @@ namespace Commander
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            // Registering our services using the AddScope ,
+            // Registering our services using the AddScope.
             // Will help us to do dependency injection
             services.AddScoped<ICommanderRepo,MockCommanderRepo>();
         }
