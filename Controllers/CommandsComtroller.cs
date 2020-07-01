@@ -10,7 +10,7 @@ namespace Commander.Controllers
     public class CommandsController : ControllerBase {
 
         private readonly ICommanderRepo _repository;
-        // Dependy  injection
+        // Dependy  injection the parameter in the Ctor 
         // Make sure the file is the same name as the class
         public CommandsController(ICommanderRepo repository)
         {
