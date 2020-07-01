@@ -47,3 +47,13 @@ bin/Debug/netcoreapp3.1/runtimes/win-arm64/native/sni.dll
 bin/Debug/netcoreapp3.1/runtimes/win-x64/native/sni.dll
 bin/Debug/netcoreapp3.1/runtimes/win-x86/native/sni.dll
 bin/Debug/netcoreapp3.1/appsettings.json
+bin/Debug/netcoreapp3.1/Commander.dll
+bin/Debug/netcoreapp3.1/Commander.deps.json
+bin/Debug/netcoreapp3.1/appsettings.json
+bin/Debug/netcoreapp3.1/Commander.pdb
+obj/project.nuget.cache
+obj/Debug/netcoreapp3.1/Commander.assets.cache
+obj/Debug/netcoreapp3.1/Commander.csproj.CoreCompileInputs.cache
+obj/Debug/netcoreapp3.1/Commander.csprojAssemblyReference.cache
+obj/Debug/netcoreapp3.1/Commander.dll
+obj/Debug/netcoreapp3.1/Commander.pdb

@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Commander.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Commander
 {
@@ -26,6 +27,14 @@ namespace Commander
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Added the connection string to our services. 
+            /** We will create a migration using: 
+            * " dotnet ef migrations add InitialMigration " command
+            * The name of our migration is " InitialMigration " 
+            * to remove migrations we need to do ef migrations remove 
+            */ 
+            services.AddDbContext<CommanderContext> (opt => 
+            opt.UseSqlServer(Configuration.GetConnectionString("CommanderConnection")));
             services.AddControllers();
             // Registering our services using the AddScope.
             // Will help us to do dependency injection
