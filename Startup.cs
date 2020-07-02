@@ -35,12 +35,14 @@ namespace Commander
             */ 
             services.AddDbContext<CommanderContext> (opt => 
             opt.UseSqlServer(Configuration.GetConnectionString("CommanderConnection")));
-            // TODO: Add new services that will run the connections to the SQL  server.
-            
+           
+
             services.AddControllers();
             // Registering our services using the AddScope.
             // Will help us to do dependency injection
-            services.AddScoped<ICommanderRepo,MockCommanderRepo>();
+           // services.AddScoped<ICommanderRepo,MockCommanderRepo>();
+             // TODO: Add new services that will run the connections to the SQL  server.
+             services.AddScoped<ICommanderRepo,SqlCommanderRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipelin
