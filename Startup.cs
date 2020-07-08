@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Commander.Data;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 namespace Commander
 {
@@ -39,10 +40,10 @@ namespace Commander
            
 
             services.AddControllers();
-            // Registering our services using the AddScope.
-            // Will help us to do dependency injection
-           // services.AddScoped<ICommanderRepo,MockCommanderRepo>(); // TODO: uncomment if we need the mock data.
-             // TODO: Add new services that will run the connections to the SQL  server.
+
+            // TODO: Add automapper to prog.
+            //
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
              services.AddScoped<ICommanderRepo,SqlCommanderRepo>();
         }
 
