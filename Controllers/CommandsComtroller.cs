@@ -21,7 +21,7 @@ namespace Commander.Controllers
         [HttpGet]
         public ActionResult <IEnumerable<Command>> GetAllCommands(){
             var commandItems = _repository.GetAllCommands();
-
+            // OK method so we only return a 200 status. 
             return Ok(commandItems);
         }
         // Get request will respond to this URI
