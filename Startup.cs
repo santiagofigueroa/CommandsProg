@@ -27,6 +27,7 @@ namespace Commander
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Dependency Injection
             // Added the connection string to our services. 
             /** We will create a migration using: 
             * " dotnet ef migrations add InitialMigration " command
@@ -40,7 +41,7 @@ namespace Commander
             services.AddControllers();
             // Registering our services using the AddScope.
             // Will help us to do dependency injection
-           // services.AddScoped<ICommanderRepo,MockCommanderRepo>();
+           // services.AddScoped<ICommanderRepo,MockCommanderRepo>(); // TODO: uncomment if we need the mock data.
              // TODO: Add new services that will run the connections to the SQL  server.
              services.AddScoped<ICommanderRepo,SqlCommanderRepo>();
         }
