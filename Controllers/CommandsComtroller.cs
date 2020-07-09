@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Commander.Models;
 using Commander.Data;
 using System.Collections.Generic;
+using AutoMapper;
+using Commander.Dtos;
+
 namespace Commander.Controllers
 { 
     //  Will look for the  API we need   
@@ -10,14 +13,18 @@ namespace Commander.Controllers
     public class CommandsController : ControllerBase {
 
         private readonly ICommanderRepo _repository;
+        private readonly IMapper _mapper;
+
         // Dependy  injection the parameter in the Ctor 
         // Make sure the file is the same name as the class
-        public CommandsController(ICommanderRepo repository)
+        // Included I Mapper for DTO implememtation. 
+
+        public CommandsController(ICommanderRepo repository,IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper; 
         }
 
-        // private readonly MockCommandRepo _repository = new MockCommandRepo();
         [HttpGet]
         public ActionResult <IEnumerable<Command>> GetAllCommands(){
             var commandItems = _repository.GetAllCommands();
@@ -27,11 +34,14 @@ namespace Commander.Controllers
         // Get request will respond to this URI
         // The id number will change from 1  to a as many items we have in the commands 
         [HttpGet("{id}")]
-        public ActionResult<Command> GetCommandByID(int id){
+        public ActionResult<CommandReadDto> GetCommandByID(int id){
             // https://docs.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-3.1 
             var commandItems = _repository.GetCommandByID(id);
-
-            return Ok(commandItems);
+            if(commandItems != null){
+                return Ok(_mapper.Map<CommandReadDto>(commandItems));
+            } 
+            // There is no need to add the item in the method. 
+            return NotFound();
         }
 
     }
