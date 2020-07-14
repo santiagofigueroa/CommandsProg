@@ -4,18 +4,13 @@ using Commander.Models;
 
 namespace  Commander.Profiles{
 
-public class CommandsController: Profile
+public class CommandsProfile: Profile
     {
 
             // Will map both objects as not found. 
-             CommandsController()
+             CommandsProfile()
             {
                 CreateMap<Command,CommandReadDto>(); 
-            }
-
-            public string getClassName (){ 
-
-                return ""; 
             }
            
     } 
