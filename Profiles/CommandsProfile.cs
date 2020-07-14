@@ -8,7 +8,8 @@ public class CommandsProfile: Profile
     {
 
             // Will map both objects as not found. 
-             CommandsProfile()
+            //  Make sure you add as public as it was not able to access it from the begining
+             public CommandsProfile()
             {
                 CreateMap<Command,CommandReadDto>(); 
             }
