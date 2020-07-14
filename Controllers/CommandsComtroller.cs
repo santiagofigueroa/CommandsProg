@@ -45,7 +45,21 @@ namespace Commander.Controllers
         }
 
         //POST api/commands 
-         
+         [HttpPost]
+        public ActionResult <CommandReadDto> CreateCommand (CommandCreateDto commandCreateDto)
+        {
+            // Implementing mapping from the DTO to the model 
+            var commandModel  = _mapper.Map<Command>(commandCreateDto);
+            _repository.CreateCommand(commandModel);
+            //  We need to call this method as it will save the parse object to the DB.
+            _repository.SaveChanges();
+
+            // Here we are doing the opposite from the Model to the DTO.
+            var commandDataModel  = _mapper.Map<CommandCreateDto>(commandModel);
+            return Ok(commandModel);
+
+        }
+
 
 
 
