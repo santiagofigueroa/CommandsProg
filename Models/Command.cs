@@ -4,10 +4,12 @@ namespace Commander.Models
 {
 
 public class Command {
+    //[key]
     public int Id {get;set; }
+     // [MaxLength(250)]
+    // JUst as an example
+    [MaxLength(250)]
     [Required]
-    // [MaxLength(250)]
-    // JUst as an example 
     public string  Howto {get; set;}
     [Required]
     public string  Line {get;set;}

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Commander.Dtos
 {
     /* 
@@ -6,8 +8,11 @@ namespace Commander.Dtos
     */
     public class CommandReadDto 
     {
+         [Required]
         public int Id {get;set; }
+         [Required]
         public string  Howto {get; set;}
+         [Required]
         public string  Line {get;set;}
     }
 }

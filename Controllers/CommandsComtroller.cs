@@ -64,7 +64,7 @@ namespace Commander.Controllers
 
             // We creating the model on route this will ma
             return CreatedAtRoute(nameof(GetCommandByID),new {Id = commandReadDto.Id},commandReadDto);
-            //return Ok(commandModel);
+            //return Ok(commandModel); 
 
         }
 
