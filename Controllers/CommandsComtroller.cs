@@ -32,8 +32,10 @@ namespace Commander.Controllers
             return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(commandItems));
         }
         // Get request will respond to this URI
-        // The id number will change from 1  to a as many items we have in the commands 
-        [HttpGet("{id}")]
+        // The id number will change from 1  to a as many items we have in the commands
+        // Gets the name of the command we are going to use to return the newly created  
+        // Command URL
+        [HttpGet("{id}", Name = "GetCommandByID")]
         public ActionResult<CommandReadDto> GetCommandByID(int id){
             // https://docs.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-3.1 
             var commandItems = _repository.GetCommandByID(id);
@@ -54,9 +56,15 @@ namespace Commander.Controllers
             //  We need to call this method as it will save the parse object to the DB.
             _repository.SaveChanges();
 
-            // Here we are doing the opposite from the Model to the DTO.
-            var commandDataModel  = _mapper.Map<CommandCreateDto>(commandModel);
-            return Ok(commandModel);
+            // Here we are doing the opposite from the Model to the DTO, and we using the
+            // The command read DTO model to read our data using the URL that will be created.
+            // NOTE: As the create does not contain an ID attribute we need to provided with the
+            // Read DTO class.
+            var commandReadDto  = _mapper.Map<CommandReadDto>(commandModel);
+
+            // We creating the model on route this will ma
+            return CreatedAtRoute(nameof(GetCommandByID),new {Id = commandReadDto.Id},commandReadDto);
+            //return Ok(commandModel);
 
         }
 
