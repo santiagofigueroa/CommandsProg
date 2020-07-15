@@ -34,6 +34,31 @@ namespace Commander.Data
         {
             throw new System.NotImplementedException();
         }
+
+        void ICommanderRepo.CreateCommand(Command cmd)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IEnumerable<Command> ICommanderRepo.GetAllCommands()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        Command ICommanderRepo.GetCommandByID(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        bool ICommanderRepo.SaveChanges()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        void ICommanderRepo.UpdateInfo(Command cmd)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 

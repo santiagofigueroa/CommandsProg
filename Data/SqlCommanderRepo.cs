@@ -35,6 +35,10 @@ public class SqlCommanderRepo: ICommanderRepo{
         {
              return (_context.SaveChanges() >= 0);
         }
+
+        public void UpdateInfo (Command cmd){
+            //Implementation of Updating a record that already excist in our DB.     
+        }
     }
 
 }

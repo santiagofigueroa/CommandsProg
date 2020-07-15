@@ -13,6 +13,8 @@ public interface ICommanderRepo
         
         void CreateCommand (Command cmd);
 
+        void UpdateInfo (Command cmd);
+
 } 
 
 }
