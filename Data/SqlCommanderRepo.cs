@@ -37,7 +37,7 @@ public class SqlCommanderRepo: ICommanderRepo{
         }
 
         public void UpdateInfo (Command cmd){
-            //Implementation of Updating a record that already excist in our DB.     
+            //Implementation of Updating a record that already excist in our DB     
         }
     }
 

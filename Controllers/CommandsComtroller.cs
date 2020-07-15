@@ -67,8 +67,25 @@ namespace Commander.Controllers
             //return Ok(commandModel); 
 
         }
+        //put/API
+        [HttpPut("{id}")] 
+        public ActionResult UpdateCommand (int id ,  CommandUpdateDto cmdUpdate){
+               var commandUpdateFromRepo = _repository.GetCommandByID(id);
+                if(commandUpdateFromRepo == null){
+                    return NotFound();
+                }
 
+                // This will do the job of doing the Update for us as it's mapping 
+                // to a new object.
+                _mapper.Map(cmdUpdate,commandUpdateFromRepo);
+                // for good practice we should always call the update  method. 
+                _repository.UpdateInfo(commandUpdateFromRepo);
+                // 
+                _repository.SaveChanges();
 
+                return NoContent();
+
+        }
 
 
     }

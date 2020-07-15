@@ -10,9 +10,7 @@ public interface ICommanderRepo
         bool SaveChanges();
         IEnumerable<Command> GetAllCommands();
         Command GetCommandByID (int id);
-        
         void CreateCommand (Command cmd);
-
         void UpdateInfo (Command cmd);
 
 } 
