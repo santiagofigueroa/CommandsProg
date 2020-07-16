@@ -88,6 +88,11 @@ namespace Commander.Controllers
         }
 
 
+        //PATCH /api/command/{id} 
+        [HttpPatch("{id}")]
+        
+
+
     }
 
  

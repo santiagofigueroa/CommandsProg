@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Commander.Data;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Newtonsoft.Json.Serialization; 
 
 namespace Commander
 {
