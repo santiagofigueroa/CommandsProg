@@ -4,6 +4,7 @@ using Commander.Data;
 using System.Collections.Generic;
 using AutoMapper;
 using Commander.Dtos;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Commander.Controllers
 { 
@@ -87,10 +88,32 @@ namespace Commander.Controllers
 
         }
 
-
         //PATCH /api/command/{id} 
-        [HttpPatch("{id}")]
-        
+         [HttpPatch("{id}")]
+        public ActionResult PartialCommandUpdate (int id , JsonPatchDocument<CommandUpdateDto> patchDoc)
+        {
+                // Making sure there is no null object in our repository. 
+                var commandModelFromRepo = _repository.GetCommandByID(id);
+                if(commandModelFromRepo == null){
+                    return NotFound();
+                }
+                //
+               var commandToPatch = _mapper.Map<CommandUpdateDto>(commandModelFromRepo); 
+                patchDoc.ApplyTo(commandToPatch,ModelState);
+                //  Checks tha the validation is all good. 
+                if(!TryValidateModel(commandToPatch)){
+                     return ValidationProblem(ModelState);  
+                }
+                // Maps from a command class to a command update  
+                _mapper.Map(commandToPatch,commandModelFromRepo);
+                // There is no need to call this as it already is mapped. 
+                // As good coding practice lets the user know is being updated. 
+                _repository.UpdateInfo(commandModelFromRepo);
+                // The clue is in the name.
+                _repository.SaveChanges();
+                // Some context. 
+                return NoContent();
+        }
 
 
     }

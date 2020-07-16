@@ -39,8 +39,15 @@ namespace Commander
             services.AddDbContext<CommanderContext> (opt => 
             opt.UseSqlServer(Configuration.GetConnectionString("CommanderConnection")));
            
-
-            services.AddControllers();
+            // Added for the JSON handler to be working properly.
+            //services.AddControllers().AddNewtonsoftJson(
+            //  s => s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
+            // Previous code could not PATCH JSON 
+            // New format can but with and XML hander.
+            services.AddControllers(s =>
+                s.ReturnHttpNotAcceptable = true
+                ).AddXmlDataContractSerializerFormatters().AddNewtonsoftJson(s =>
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
 
             // TODO: Add automapper to prog.
             //
