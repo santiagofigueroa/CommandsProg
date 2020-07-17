@@ -14,6 +14,20 @@ public class SqlCommanderRepo: ICommanderRepo{
             _context = context; 
         }
 
+        public void CommandDelete(Command cmd)
+        {
+            // Check that the Command we going to delete 
+            // exist in our repository. 
+
+           if(cmd == null ){
+
+                throw new ArgumentNullException(nameof(cmd));
+            }
+
+            _context.Commands.Remove(cmd);
+
+        }
+
         public void CreateCommand(Command cmd)
         {
             if(cmd == null ){
@@ -37,7 +51,9 @@ public class SqlCommanderRepo: ICommanderRepo{
         }
 
         public void UpdateInfo (Command cmd){
-            //Implementation of Updating a record that already excist in our DB     
+            //Implementation of Updating a record that already excist in our DB 
+            // Wil do nothin on thi instance as we do nor need to update from this class
+            // instead  from the Commmand controller.  
         }
     }
 

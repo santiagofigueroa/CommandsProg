@@ -12,6 +12,7 @@ public interface ICommanderRepo
         Command GetCommandByID (int id);
         void CreateCommand (Command cmd);
         void UpdateInfo (Command cmd);
+        void CommandDelete(Command id);
 
 } 
 

@@ -7,6 +7,11 @@ namespace Commander.Data
     public class MockCommanderRepo : ICommanderRepo
 
     {
+        public void CommandDelete(Command id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void CreateCommand(Command cmd)
         {
             throw new System.NotImplementedException();
